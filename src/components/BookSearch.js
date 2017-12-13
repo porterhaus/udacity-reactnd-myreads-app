@@ -4,7 +4,8 @@ class BookSearch extends React.Component {
   render () {
     return (
       <div>
-        I am a BookSearch Component!
+        <h1>I am a BookSearch Component!</h1>
+        {JSON.stringify(this.props.listBooks)}
       </div>
     );
   }
