@@ -14,6 +14,7 @@ class BookSearch extends React.Component {
       BooksAPI.search(query, 100).then(results => {
         if (results.length > 0) { // Have to check the length because it causes an error in the console without the check.
           // https://stackoverflow.com/questions/12482961/is-it-possible-to-change-values-of-the-array-when-doing-foreach-in-javascript
+          // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
           // Is this okay to do? It's mutating the state directly for those books that don't have a shelf.
           results.forEach((book, index, results) => {
             // For each book in results check to see if it is in the listBooks state received via props.
