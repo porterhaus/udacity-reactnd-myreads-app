@@ -14,6 +14,7 @@ class BookShelf extends React.Component {
                 <li key={book.id}>
                   <Book 
                     book={book}
+                    changeBookShelf={this.props.changeBookShelf}
                   />
                 </li>
               )

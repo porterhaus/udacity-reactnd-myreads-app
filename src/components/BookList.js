@@ -20,14 +20,17 @@ class BookList extends React.Component {
               <BookShelf
                 title={'Currently Reading'}
                 books={this.filterBooks('currentlyReading')}
+                changeBookShelf={this.props.changeBookShelf}
               />
               <BookShelf
                 title={'Want to Read'}
                 books={this.filterBooks('wantToRead')}
+                changeBookShelf={this.props.changeBookShelf}
               />
               <BookShelf
                 title={'Read'}
                 books={this.filterBooks('read')}
+                changeBookShelf={this.props.changeBookShelf}
               />
             </div>
           </div>

@@ -6,6 +6,13 @@ class Book extends React.Component {
     shelf: this.props.book.shelf
   };
 
+  changeBookShelf = (e) => {
+    this.props.changeBookShelf(this.props.book, e.target.value);
+    this.setState({
+      shelf: e.target.value
+    });
+  }
+
   render () {
     const { book } = this.props;
 
@@ -23,6 +30,7 @@ class Book extends React.Component {
         <div className="book-shelf-changer">
           <select 
             value={this.state.shelf}
+            onChange={this.changeBookShelf}
           >
             <option value="currentlyReading">Currently Reading</option>
             <option value="wantToRead">Want to Read</option>
