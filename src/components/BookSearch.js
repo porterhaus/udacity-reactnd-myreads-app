@@ -12,9 +12,22 @@ class BookSearch extends React.Component {
   searchBooks = (query) => {
     if (query.trim()) {
       BooksAPI.search(query, 100).then(results => {
-        this.setState({
-          searchBooks: results
-        });   
+        if (results.length > 0) {
+          // https://stackoverflow.com/questions/12482961/is-it-possible-to-change-values-of-the-array-when-doing-foreach-in-javascript
+          // Is this okay to do? It's mutating the state directly for those books that don't have a shelf.
+          results.forEach((book, index, results) => {
+            // For each book in results check to see if it is in the listBooks state received via props.
+            let listBook = this.props.listBooks.find(b => b.id === book.id); //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+            // For each book in results check that it has a value for shelf or give it a value of 'none'.
+            book.shelf = listBook ? listBook.shelf : 'none';
+            // Update the results array to reflect the update to the shelf value.
+            results[index] = book;
+          });
+
+          this.setState({
+            searchBooks: results
+          });
+        }
       });
     } else {
       this.setState({
