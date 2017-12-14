@@ -3,11 +3,22 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import BookShelf from './BookShelf';
 
+/**
+* @description Stateless Functional Component that lists Shelves and Books
+* @constructor
+* @param {array} books - Books that have been assigned to a Shelf
+* @param {function} changeBookShelf - Changes the Book's Shelf
+*/
 const BookList = ({listBooks, changeBookShelf}) => {
+  /**
+  * @description Filters a Book to its assigned Shelf
+  * @param {string} shelf 
+  * @returns {array} Array of books grouped by shelf
+  */
   const filterBooks = (shelf) => {
     return listBooks.filter(b => b.shelf === shelf)
   };
-  
+
   return (
     <div>
       <div className="list-books"> 

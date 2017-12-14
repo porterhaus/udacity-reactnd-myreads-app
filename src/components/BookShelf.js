@@ -2,6 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Book from './Book';
 
+/**
+* @description Stateless Functional Component that lists Books
+* @constructor
+* @param {string} title - Name of the Book Shelf
+* @param {array} books - Books that have been assigned to a Shelf
+* @param {function} changeBookShelf - Changes the Book's Shelf
+*/
 const BookShelf = ({title, books, changeBookShelf}) => 
   <div className="bookshelf">
     <h2 className="bookshelf-title">{title}</h2>

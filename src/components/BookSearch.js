@@ -4,17 +4,28 @@ import PropTypes from 'prop-types';
 import * as BooksAPI from '../utils/BooksAPI';
 import Book from './Book';
 
+/**
+* @description Component that displays search results for Books
+* @constructor
+* @param {array} books - Books that are currently on shelves
+* @param {function} changeBookShelf - Changes the Book's Shelf
+*/
 class BookSearch extends React.Component {
   state = {
     searchBooks: []
   };
-
+  
+  /**
+  * @description Executes a search of the BooksAPI
+  * @param {string} query
+  * @returns {arrray} Array of books from the search results
+  */
   searchBooks = (query) => {
     if (query.trim()) {
       BooksAPI.search(query, 100).then(results => {
         if (results.length > 0) {
           const updatedResults = results.map (book => {
-            const existingBook = this.props.listBooks.find(
+            const existingBook = this.props.listBooks.find (
               b => b.id === book.id
             );
             if (existingBook) {
