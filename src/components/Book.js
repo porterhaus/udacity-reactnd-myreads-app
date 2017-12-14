@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 class Book extends React.Component {
   state = {
-    shelf: this.props.book.shelf
+    shelf: this.props.book.shelf ? this.props.book.shelf : "none"
   };
 
   changeBookShelf = (e) => {
